@@ -22,12 +22,13 @@ MeetingBot is an intelligent agent that automates the lifecycle of a meeting, fr
 * **A microphone**
 * **A Google account** with a calendar.
 * **A Portia AI account and API key.**
+* **A ASSEMBLY AI API KEY**
 
 #### Installation
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/your-username/meetingbot-portia.git](https://github.com/your-username/meetingbot-portia.git)
+    git clone [(https://github.com/Byte-Sandwiches/meetingbot_portia.git)]
     cd meetingbot-portia
     ```
 2.  Create and activate a virtual environment:
@@ -81,21 +82,35 @@ To run the MeetingBot, execute the `main.py` script from the `src` directory wit
 ### Project Structure
 
 ```
+## Project Structure
+
 .
-├── agents/
-│   ├── meeting_agent.py          # Core logic for finding and joining meetings.
-│   └── transcript_agent.py       # Handles audio recording and Portia AI integration.
-├── config/
-│   ├── project_config.py         # Stores project-specific configuration (API keys, paths).
-│   └── setup_google_calendar_auth.py # Utility script for Google API authentication.
-├── recordings/                   # Directory to store raw meeting audio files.
-├── transcripts/                  # Directory to store AI-generated text analysis.
 ├── src/
-│   └── main.py                   # The main entry point of the application.
-├── .gitignore                    # Specifies files and folders to ignore in Git.
-├── README.md                     # This file.
-└── requirements.txt              # Project dependencies.
-```
+│ ├── agents/
+│ │ ├── meeting_agent.py # Core logic for finding and joining meetings
+│ │ └── transcript_agent.py # Handles audio recording and transcription
+│ │
+│ ├── config/
+│ │ ├── project_config.py # Project-specific configurations (API keys, paths)
+│ │ └── init.py
+│ │
+│ ├── utils/
+│ │ ├── get_devices.py # Utility for listing audio input devices
+│ │ └── init.py
+│ │
+│ └── main.py # Main entry point of the application
+│
+├── venv/ # Python virtual environment
+├── .env # Environment variables
+├── .env.example # Example environment variable template
+├── .gitignore # Git ignore file
+├── check.py # Utility check script
+├── credentials.json # Google API credentials
+├── requirements.txt # Project dependencies
+├── setup_google_auth.py # Google authentication setup
+├── token.pickle # Stores Google API authentication token
+└── README.md # Project documentation
+
 
 ---
 
