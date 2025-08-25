@@ -22,13 +22,13 @@ MeetingBot is an intelligent agent that automates the lifecycle of a meeting, fr
 * **A microphone**
 * **A Google account** with a calendar.
 * **A Portia AI account and API key.**
-* **A ASSEMBLY AI API KEY**
+* **A ASSEMProvides simple, informative messages about task status (e.g., "Checking Google Calendar," "Task completed," "Task failed").BLY AI API KEY**
 
 #### Installation
 
 1.  Clone the repository:
     ```bash
-    git clone [(https://github.com/Byte-Sandwiches/meetingbot_portia.git)]
+    git clone https://github.com/Byte-Sandwiches/meetingbot_portia.git
     cd meetingbot-portia
     ```
 2.  Create and activate a virtual environment:
@@ -79,44 +79,41 @@ To run the MeetingBot, execute the `main.py` script from the `src` directory wit
     python src/main.py --test
     ```
 
-### Project Structure
+#### Project Structure
 
+  ```bash
+
+       ├── src/
+    │     ├── agents/
+    │     │ ├── meeting_agent.py # Core logic for finding and joining meetings
+    │     │ └── transcript_agent.py # Handles audio recording and transcription
+    │     │
+    │     ├── config/
+    │     │ ├── project_config.py # Project-specific configurations (API keys, paths)
+    │     │ └── init.py
+    │     │
+    │     ├── utils/
+    │     │ ├── get_devices.py # Utility for listing audio input devices
+    │     │ └── init.py
+    │     │
+    │     └── main.py # Main entry point of the application
+    │
+    ├── venv/ # Python virtual environment
+    ├── .env # Environment variables
+    ├── .env.example # Example environment variable template
+    ├── .gitignore # Git ignore file
+    ├── check.py # Utility check script
+    ├── credentials.json # Google API credentials
+    ├── requirements.txt # Project dependencies
+    ├── setup_google_auth.py # Google authentication setup
+    ├── token.pickle # Stores Google API authentication token
+    └── README.md # Project documentation
 ```
-## Project Structure
 
-.
-├── src/
-│ ├── agents/
-│ │ ├── meeting_agent.py # Core logic for finding and joining meetings
-│ │ └── transcript_agent.py # Handles audio recording and transcription
-│ │
-│ ├── config/
-│ │ ├── project_config.py # Project-specific configurations (API keys, paths)
-│ │ └── init.py
-│ │
-│ ├── utils/
-│ │ ├── get_devices.py # Utility for listing audio input devices
-│ │ └── init.py
-│ │
-│ └── main.py # Main entry point of the application
-│
-├── venv/ # Python virtual environment
-├── .env # Environment variables
-├── .env.example # Example environment variable template
-├── .gitignore # Git ignore file
-├── check.py # Utility check script
-├── credentials.json # Google API credentials
-├── requirements.txt # Project dependencies
-├── setup_google_auth.py # Google authentication setup
-├── token.pickle # Stores Google API authentication token
-└── README.md # Project documentation
+#### Future Enhancements
 
-
----
-
-### Future Enhancements
-* Add support for other meeting platforms (e.g., Zoom, Microsoft Teams).
-* Integrate with project management tools to automatically create tasks from action items.
-* Develop a graphical user interface or a simple web dashboard.
-* Implement real-time streaming to Portia AI for live transcription.
-* also an future enhancement
+* **Add support for other meeting platforms (e.g., Zoom, Microsoft Teams).**
+* **Integrate with project management tools to automatically create tasks from action items.**
+* **Develop a graphical user interface or a simple web dashboard.**
+* **Implement real-time streaming to Portia AI for live transcription.**
+* **also an future enhancement**
