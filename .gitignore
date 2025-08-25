@@ -3,3 +3,7 @@ venv/
 __pycache__/
 credentials.json
 token.pickle
+*.wav
+*.txt
+recordings/
+transcripts/

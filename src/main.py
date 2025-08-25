@@ -3,6 +3,7 @@ import argparse
 import asyncio
 import os
 import signal
+import sys
 from agents.meeting_agent import MeetingBotAgent
 from dotenv import load_dotenv
 
@@ -34,26 +35,29 @@ async def main():
     print()
 
     bot = MeetingBotAgent()
-    await bot.run_workflow(
-        monitor_mode=args.monitor,
-        auto_open=args.auto_open,
-        test_mode=args.test,
-        transcribe=args.transcribe,
-    )
+    try:
+        await bot.run_workflow(
+            monitor_mode=args.monitor,
+            auto_open=args.auto_open,
+            test_mode=args.test,
+            transcribe=args.transcribe,
+        )
+    except KeyboardInterrupt:
+        print("\n👋 Application stopped by user.")
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-
-    # Graceful shutdown on Ctrl+C
-    def shutdown(sig, frame):
-        print("\n👋 Monitoring stopped (cancelled by user).")
-        for task in asyncio.all_tasks(loop):
-            task.cancel()
-        loop.stop()
+    # Graceful shutdown
+    def shutdown(signum, frame):
+        print("\n👋 Application stopped by user.")
+        sys.exit(0)
 
     signal.signal(signal.SIGINT, shutdown)
+    signal.signal(signal.SIGTERM, shutdown)
 
     try:
-        loop.run_until_complete(main())
-    finally:
-        loop.close()
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\n👋 Application stopped by user.")
+    except Exception as e:
+        print(f"[Fatal Error] {e}")
+        sys.exit(1)
